@@ -1,7 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:real_estate_app/generated/l10n.dart';
+import 'package:real_estate_app/l10n/locale_manager.dart';
+import 'package:real_estate_app/navigation/routes.dart';
+import 'package:real_estate_app/navigation/routes_initializer.dart';
+import 'package:real_estate_app/style/theme_manager.dart';
 
 void main() {
-  runApp(const MyApp());
+  WidgetsFlutterBinding.ensureInitialized();
+  runApp(
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider<ThemeManager>(create: (_) => ThemeManager()),
+        ChangeNotifierProvider<LocaleManager>(create: (_) => LocaleManager()),
+      ],
+      child: const MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -10,12 +25,15 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      initialRoute: Routes.dashboard,
+      onGenerateRoute: onGenerateRoute,
+      routes: routes(),
+      theme: Provider.of<ThemeManager>(context).themeData,
+      locale: Provider.of<LocaleManager>(context).locale,
+      supportedLocales: Strings.delegate.supportedLocales,
+      localizationsDelegates: const [
+        Strings.delegate,
+      ],
     );
   }
 }
