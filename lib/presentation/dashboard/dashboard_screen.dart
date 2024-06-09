@@ -173,8 +173,14 @@ class _MainWidget extends StatelessWidget {
               systemOverlayStyle: SystemUiOverlayStyle.light,
             ),
             body: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text(tab.name),
+                Center(
+                  child: Text(
+                    "${tab.name} screen is yet to be implemented",
+                    style: const TextStyle(color: AppColors.black),
+                  ),
+                ),
               ],
             ),
           ),
