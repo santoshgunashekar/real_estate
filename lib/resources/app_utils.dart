@@ -2,6 +2,9 @@
 
 import 'dart:math';
 
+import 'package:flutter/material.dart';
+import 'package:real_estate_app/model/place_model.dart';
+
 abstract class AppUtils {
   static String getRandomAddress() {
     final List<String> address = [
@@ -23,5 +26,22 @@ abstract class AppUtils {
     ];
     final int index = Random().nextInt(address.length);
     return address.elementAt(index);
+  }
+
+  static List<PlaceModel> getRandomPlaces() {
+    final Random random = Random();
+    return List.generate(
+      5,
+      (index) => PlaceModel(
+        price: "₹ ${random.nextInt(200)} million",
+        infrastructure: "Infra",
+        withoutAnyLayer: random.nextBool(),
+        cosyAreas: random.nextBool(),
+        offset: Offset(
+          random.nextDouble(),
+          random.nextDouble(),
+        )
+      ),
+    );
   }
 }

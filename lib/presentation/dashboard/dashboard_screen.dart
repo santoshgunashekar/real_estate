@@ -5,6 +5,7 @@ import 'package:flutter/services.dart';
 import 'package:real_estate_app/presentation/dashboard/explore/explore_screen.dart';
 import 'package:real_estate_app/presentation/dashboard/home/home_screen.dart';
 import 'package:real_estate_app/resources/app_enums.dart';
+import 'package:real_estate_app/resources/constants.dart';
 import 'package:real_estate_app/style/colors.dart';
 import 'package:real_estate_app/style/font_size.dart';
 import 'package:real_estate_app/style/spacing.dart';
@@ -60,7 +61,7 @@ class _ButtonBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.only(bottom: Spacing.margin32),
+      margin: const EdgeInsets.only(bottom: Constants.buttonBarBottomMargin),
       padding: const EdgeInsets.all(Spacing.margin4),
       decoration: BoxDecoration(
         color: AppColors.black.withOpacity(0.8),

@@ -8,4 +8,5 @@ abstract class JpegImages {
   static const String place2 = "${_path}place_2.jpeg";
   static const String place3 = "${_path}place_3.jpeg";
   static const String profile = "${_path}profile.jpeg";
+  static const String map = "${_path}map.jpeg";
 }
